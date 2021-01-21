@@ -4,7 +4,9 @@
 2. Write/run app.py
 3. Deploy to Heroku
 
+### An example app
 
+For a more developed example (and a Streamlit tutorial), take a look at the `example-app` branch of this repository. This branch contains a built-out `app.py`. It's also deployed on [Heroku](https://streamlit-tutorial-app.herokuapp.com/).
 
 ## Environment
 
@@ -38,6 +40,25 @@ if __name__ == "__main__":
 
 Once you have a working `app.py`, you can enter `streamlit run app.py` in the terminal. Of course, make sure you're in the appropriate directory for your project. By default, Streamlit runs on port 8501, so you can access it in your web browser with the URL `localhost:8501`. You can change this port, if you'd like, but I don't think that's immediately necessary to cover.
 
-## Another example app
 
-For a more developed example, take a look at the `example-app` branch of this repository. This branch contains a built-out `app.py`. It's also deployed on [Heroku](https://streamlit-tutorial-app.herokuapp.com/).
+
+## Deploy to Heroku
+
+### Overview
+
+So your app is working locally. That's great, but you probably want to share it. [Heroku](heroku.com) is a simple and free way to deploy a simple web app. Let's take a look.
+
+To deploy anything to Heroku, we need a text file called `Procfile`. I'm not going to get into it in too much detail, but this tells Heroku what services are necessary for the app to run, and potentially what commands to use to get started.
+
+To deploy a Streamlit app, we need a setup script, which we have here: `setup.sh`. This creates some configuration files necessary for Streamlit. Again, I won't get into too many details. Instead, just copy those files (or fork this repository) to start creating your own app.
+
+### Deploying
+1. Put your code in a git repository, if you haven't already! There are multiple ways to deploy from Heroku, but using automatic deploys based on GitHub repo is a simple way to ensure that your app matches your code.
+2. Make a Heroku account if you haven't already!
+3. Log in to the [Heroku Dashboard](https://dashboard.heroku.com/apps)
+4. In the top right corner, click the box that says **New**, then select **Create new app**.
+5. Name your app. It has to be a completely unique name due to the way Heroku creates URLs. If you leave the name field blank, Heroku will create a random name for you. Go to the next page.
+6. The second section, **Deployment Method**, has an option for connecting to GitHub. If you haven't done this before, it should prompt you to log in.
+7. Search for the name of your repo. This one, for example, is `heroku-demo`. Once it shows up, click **Connect**.
+8. Make sure you're deploying from the right branch. This is probably going to be your **main** branch, but it might not. My tutorial app is deployed from a branch called `example-app`. In a real production setting, it's common to have two (or more) versions of a website deployed from different branches. For instance, you might have the production site deployed from `main`, and a dev site deployed from `dev`. I would recommend enabling automatic deploys. This re-builds the app any time you push to the branch.
+9. You should be all set!
