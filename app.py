@@ -12,6 +12,7 @@ def insert_markdown_file(filepath):
 
 
 def app():
+
   st.title("A very meta Streamlit demo")
   
   st.sidebar.header("Some things we'll cover:")
@@ -202,3 +203,4 @@ with right_col:
   
 if __name__ == '__main__':
     app()
+
