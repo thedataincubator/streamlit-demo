@@ -15,7 +15,11 @@ def app():
 
   st.title("A very meta Streamlit demo")
   
-  st.sidebar.header("Some things we'll cover:")
+  st.sidebar.markdown("""**GitHub**: [This app](https://github.com/mcullan/streamlit-demo/tree/example-app) / [Template repo](https://github.com/mcullan/streamlit-demo)
+
+""")
+
+  st.sidebar.markdown("**Some things we'll cover:**")
   st.sidebar.markdown("""
 * Markdown
 * Pandas
@@ -72,7 +76,7 @@ Streamlit is made to render lots of Python objects such as Pandas DataFrames. Le
   ```
   
   """)
-  st.sidebar.subheader("Select an aggregator for the DataFrame")
+  st.sidebar.markdown("**DataFrame:**")
   func = st.sidebar.selectbox("Aggregate:", ['Sum', 'Mean', 'Median'])
   
   if func == 'Sum':
