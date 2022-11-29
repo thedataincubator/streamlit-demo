@@ -4,18 +4,17 @@ import pandas as pd
 import altair as alt
 
 def insert_markdown_file(filepath):
-  '''filepath might be something like markdown-01.md'''
+  '''Filepath might be something like markdown-01.md'''
   with open(filepath, 'r') as f:
     contents = f.read()
   return contents
-
 
 
 def app():
 
   st.title("A very meta Streamlit demo")
   
-  st.sidebar.markdown("""**GitHub**: [This app](https://github.com/mcullan/streamlit-demo/tree/example-app) / [Template repo](https://github.com/mcullan/streamlit-demo)
+  st.sidebar.markdown("""**GitHub**: [This app](https://github.com/thedataincubator/streamlit-demo/tree/example-app) / [Template repo](https://github.com/thedataincubator/streamlit-demo)
 
 """)
 
@@ -143,7 +142,6 @@ We then place content in these columns using a *context manager* like the one we
 * Oh no, everything is overlapping...
       """)
 
-
   with left_col:
     if mark == "Line":
       chart = alt.Chart(df, title="A chart. Nice.").mark_line().encode(x=xaxis, y=yaxis)
@@ -204,7 +202,6 @@ with right_col:
  ```
     ''')
 
-  
 if __name__ == '__main__':
     app()
 
