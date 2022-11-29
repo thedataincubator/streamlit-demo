@@ -50,7 +50,7 @@ Some things to note:
   * You can change this by adding the argument `unsafe_allow_html=True`.
 * If you have lots of text, it might get unwieldy to write it all in one file. You might consider writing Markdown in separate files and importing it. Maybe that would look something like this:''')
   
-  ex_1 = st.beta_expander("Click to see code!")
+  ex_1 = st.expander("Click to see code!")
   with ex_1:
     st.markdown(insert_markdown_file('markdown-01.md'))
  
@@ -67,11 +67,11 @@ Streamlit is made to render lots of Python objects such as Pandas DataFrames. Le
   
   # We can reference func and use the currently selected value in the box.
   if func == 'Sum':
-    st.write(df.sum())
+    st.write(df.sum().rename('Sum'))
   elif func == 'Mean':
-    st.write(df.mean())
+    st.write(df.mean().rename('Mean'))
   elif func == 'Median':
-    st.write(df.median)
+    st.write(df.median().rename('Median'))
   ```
   
   """)
@@ -79,13 +79,13 @@ Streamlit is made to render lots of Python objects such as Pandas DataFrames. Le
   func = st.sidebar.selectbox("Aggregate:", ['Sum', 'Mean', 'Median'])
   
   if func == 'Sum':
-    out = df.sum()
+    out = df.sum().rename('Sum')
   elif func == 'Mean':
-    out = df.mean()
+    out = df.mean().rename('Mean')
   elif func == 'Median':
-    out = df.median()
+    out = df.median().rename('Median')
     
-  col_df, col_out, col_text = st.beta_columns((3, 2, 3))
+  col_df, col_out, col_text = st.columns((1, 1, 1))
   with col_df:
     st.write("**Original**")
     st.write(df)
@@ -95,7 +95,7 @@ Streamlit is made to render lots of Python objects such as Pandas DataFrames. Le
   with col_text:
     st.markdown("""
   **Description:**
-  * By the way, I'm using columns here. 
+  * By the way, I'm using `st.columns` here. 
   * See below for details.""")
     
   st.markdown("""**Note:** When you change the value of a widget, like our `selectbox`, the *entire* app will re-run. If your app makes any slow computations, this can result in inefficient performance. One major speedup: put the decorator `@st.cache` above all function definitions. This will cache the results of function calls and reload them instead of running the function again. This is particularly useful if you load a large data file or make an API call. For example, you may use something like:
@@ -114,12 +114,12 @@ As you might expect, it's easy to use Streamlit with plotting libraries. Let's r
 
 Let's also create some `selectbox` selectors to modify our chart encoding. Just for fun, let's make some columns here. 
 
-Streamlit lets use create content in columns using `st.beta_columns`, which takes a tuple of relative column widths as arguments. In other words,
+Streamlit lets use create content in columns using `st.columns`, which takes a tuple of relative column widths as arguments. In other words,
 we can write something like this to create 2 columns, with the right-hand column twice as wide as the left.
 
 ```python
 
-left_col, right_col = st.beta_columns((1, 2))
+left_col, right_col = st.columns((1, 2))
 
 with left_col:
   st.write("stuff goes here")
@@ -130,7 +130,7 @@ with right_col:
 We then place content in these columns using a *context manager* like the one we saw for the expander.
   """)
 
-  left_col, right_col = st.beta_columns((2, 1))
+  left_col, right_col = st.columns((2, 1))
 
   with right_col:
     xaxis = st.selectbox("X axis encoding:", ['x', 'y'])
